@@ -1,3 +1,5 @@
+Link to file with images: https://docs.google.com/document/d/1lPALVh4FBZro047m8NvhSo1KGV6kDcthynq_Fh3-xmU/edit?usp=sharing
+
 **Introduction:**  
 The following project was created to assist others in creating printable certificates. It contains a single script that reads the contents of a csv file, replaces a few variables in an html template and creates a copy of that html file with a new name. Then the script converts these html files into pdfs using a tool called WKHTMLtoPDF. The pdf conversion is optional and can be commented out at the end of the script if needed. 
 
