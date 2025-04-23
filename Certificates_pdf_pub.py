@@ -22,9 +22,9 @@ def clean_file_title(title):
                 '=':"-equal-",
                 '+':"-plus-",
                 ' ':"_",
-				'(':"-paren-",
-				')':"-paren-",
-				'&':"-amper-"
+		'(':"-paren-",
+		')':"-paren-",
+		'&':"-amper-"
               }
     try:
         for char, uni in escapes.items():
@@ -73,7 +73,7 @@ for names, topic in topicAndpresenters:
         print(f'created: {clean_file_title(topic)}.html')
         f.close()
 #########################
-# Process HTML to pdfs
+# Process HTML to pdfs. Comment section out if PDFs are not needed.
 #########################
 
 local = os.path.abspath('.')
