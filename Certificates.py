@@ -22,9 +22,9 @@ def clean_file_title(title):
                 '=':"-equal-",
                 '+':"-plus-",
                 ' ':"_",
-		'(':"-paren-",
-		')':"-paren-",
-		'&':"-amper-"
+                '(':"-paren-",
+                ')':"-paren-",
+                '&':"-amper-"
               }
     try:
         for char, uni in escapes.items():
@@ -63,10 +63,10 @@ elif "certs" not in dirList:
 #########################
 
 for ids, topic in topicAndpresenters.items():
-	values = topic.split('@')
-	presenterNames = values[0]
-	topicName = values[1]
-	certificate = "dev/Certificate_01.html"
+    values = topic.split('@')
+    presenterNames = values[0]
+    topicName = values[1]
+    certificate = "dev/Certificate_01.html"
     with open(certificate, 'r', newline='', encoding='utf-8') as f:
         info = f.read()
         namesReplace = re.sub(r'{{participant}}', names, info)
