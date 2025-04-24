@@ -39,7 +39,7 @@ topicAndpresenters = set()
 # Loop through csv file adding to topicAndpresenters set, skip blanks
 #########################
 
-with open('names_and_presentations2.csv', newline='') as csvfile:
+with open('names_and_presentations.csv', newline='') as csvfile:
     FeedbackDictReader = csv.DictReader(csvfile, delimiter=',')
     for line in FeedbackDictReader:
         ids = line['ID']
