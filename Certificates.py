@@ -33,7 +33,7 @@ def clean_file_title(title):
     except UnicodeError as f:
         print('{f} there was a error continuing')
 
-topicAndpresenters = set()
+topicAndpresenters = {}
 
 #########################
 # Loop through csv file adding to topicAndpresenters set, skip blanks
