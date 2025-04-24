@@ -46,7 +46,7 @@ with open('names_and_presentations.csv', newline='') as csvfile:
         names = line['Presenters']
         topic = line['Presentation Title']
         dates = line['Date']
-	topicAndpresenters[ids]=f'{names}@{topic}'
+        topicAndpresenters[ids]=f'{names}@{topic}'
 
 #########################
 # List directory, check for "certs" folder remove / create if needed
