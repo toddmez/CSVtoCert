@@ -45,7 +45,7 @@ with open('names_and_presentations.csv', newline='') as csvfile:
         names = line['Presenters']
         topic = line['Presentation Title']
         dates = line['Date']
-        values = names, topic
+        values = names, topic, dates
         if len(names) != 0:
             topicAndpresenters.add(values)
 
@@ -63,7 +63,7 @@ elif "certs" not in dirList:
 # Read set, read certificate (template), open template, replace name placeholder, replace topic placeholder. create new html file in certs folder.
 #########################
 
-for names, topic in topicAndpresenters:
+for names, topic, dates in topicAndpresenters:
     certificate = "dev/Certificate_01.html"
     with open(certificate, 'r', newline='', encoding='utf-8') as f:
         info = f.read()
