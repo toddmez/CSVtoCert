@@ -39,15 +39,14 @@ topicAndpresenters = set()
 # Loop through csv file adding to topicAndpresenters set, skip blanks
 #########################
 
-with open('names_and_presentations.csv', newline='') as csvfile:
+with open('names_and_presentations2.csv', newline='') as csvfile:
     FeedbackDictReader = csv.DictReader(csvfile, delimiter=',')
     for line in FeedbackDictReader:
+        ids = line['ID']
         names = line['Presenters']
         topic = line['Presentation Title']
         dates = line['Date']
-        values = names, topic
-        if len(names) != 0:
-            topicAndpresenters.add(values)
+	topicAndpresenters[ids]=f'{names}@{topic}'
 
 #########################
 # List directory, check for "certs" folder remove / create if needed
@@ -63,16 +62,19 @@ elif "certs" not in dirList:
 # Read set, read certificate (template), open template, replace name placeholder, replace topic placeholder. create new html file in certs folder.
 #########################
 
-for names, topic in topicAndpresenters:
-    certificate = "dev/Certificate_01.html"
+for ids, topic in topicAndpresenters.items():
+	values = topic.split('@')
+	presenterNames = values[0]
+	topicName = values[1]
+	certificate = "dev/Certificate_01.html"
     with open(certificate, 'r', newline='', encoding='utf-8') as f:
         info = f.read()
-    namesReplace = re.sub(r'{{participant}}', names, info)
-    dateReplace = re.sub(r'{{date}}', dates, namesReplace)
-    finalCertificate = re.sub(r'{{topic}}', topic, dateReplace)
-    with open('certs/' + clean_file_title(topic) + '.html', 'a', newline='', encoding='utf-8') as f:
+        namesReplace = re.sub(r'{{participant}}', names, info)
+        dateReplace = re.sub(r'{{date}}', dates, namesReplace)
+        finalCertificate = re.sub(r'{{topic}}', topic, dateReplace)
+    with open('certs/' + presenterNames + '_' + clean_file_title(topicName) + '.html', 'a', newline='', encoding='utf-8') as f:
         f.write(finalCertificate)
-        print(f'created: {clean_file_title(topic)}.html')
+        print(f'created: {presenterNames}_{clean_file_title(topicName)}.html')
         f.close()
 #########################
 # Process HTML to pdfs. Comment section out if PDFs are not needed.
