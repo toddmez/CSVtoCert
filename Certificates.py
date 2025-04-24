@@ -44,6 +44,7 @@ with open('names_and_presentations.csv', newline='') as csvfile:
     for line in FeedbackDictReader:
         names = line['Presenters']
         topic = line['Presentation Title']
+        dates = line['Date']
         values = names, topic
         if len(names) != 0:
             topicAndpresenters.add(values)
@@ -67,7 +68,8 @@ for names, topic in topicAndpresenters:
     with open(certificate, 'r', newline='', encoding='utf-8') as f:
         info = f.read()
     namesReplace = re.sub(r'{{participant}}', names, info)
-    finalCertificate = re.sub(r'{{topic}}', topic, namesReplace)
+    dateReplace = re.sub(r'{{date}}', dates, namesReplace)
+    finalCertificate = re.sub(r'{{topic}}', topic, dateReplace)
     with open('certs/' + clean_file_title(topic) + '.html', 'a', newline='', encoding='utf-8') as f:
         f.write(finalCertificate)
         print(f'created: {clean_file_title(topic)}.html')
